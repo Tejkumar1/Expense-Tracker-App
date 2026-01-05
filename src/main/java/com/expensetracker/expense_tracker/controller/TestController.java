@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @GetMapping("/test")
-    public String test() {
-        return "Expense Tracker Backend is running!";
+    @GetMapping("/")
+    public String home() {
+        return "Expense Tracker Backend is Running!";
     }
 }

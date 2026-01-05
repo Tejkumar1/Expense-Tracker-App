@@ -1,6 +1,6 @@
 package com.expensetracker.expense_tracker.service;
 
-import com.expensetracker.expense_tracker.entity.Expense;
+import com.expensetracker.expense_tracker.model.Expense;
 import com.expensetracker.expense_tracker.repository.ExpenseRepository;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +21,9 @@ public class ExpenseService {
 
     public List<Expense> getAllExpenses() {
         return expenseRepository.findAll();
+    }
+
+    public void deleteExpense(Long id) {
+        expenseRepository.deleteById(id);
     }
 }

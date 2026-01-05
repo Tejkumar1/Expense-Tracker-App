@@ -5,18 +5,25 @@ import com.expensetracker.expense_tracker.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/auth")
 @CrossOrigin(origins = "http://localhost:3000")
-public class UserController {
+public class AuthController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public AuthController(UserService userService) {
         this.userService = userService;
     }
 
     @PostMapping("/register")
     public User register(@RequestBody User user) {
-        return userService.registerUser(user);
+        return userService.register(user);
     }
+
+    @PostMapping("/login")
+public String login(@RequestBody User user) {
+    User loggedIn = userService.login(user.getEmail(), user.getPassword());
+    return JwtUtil.generateToken(loggedIn.getEmail());
+}
+
 }
