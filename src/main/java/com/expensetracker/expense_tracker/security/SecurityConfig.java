@@ -24,6 +24,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/users/**").permitAll() // Bug 3 fix: was blocked before
+                .requestMatchers("/api/expenses/**").permitAll() // ADD THIS LINE
                 .requestMatchers("/").permitAll()
                 .anyRequest().authenticated()
             );
